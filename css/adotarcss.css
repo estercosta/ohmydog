@@ -1,0 +1,166 @@
+bg-secundario{
+	background-color: #2c3e50!important;
+}
+
+body{
+	font-family: 'Montserrat', sans-serif;
+	background-image: url(../img/q8.png);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100%;
+	background-position: 0px 0px;
+	height: 40vw;
+
+	
+}
+
+#mainNav{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: rgba(0,0,0,0.7);
+}
+
+#mainNav .navbar-brand{
+	color: #fff;
+	font-size: 35px;
+}
+
+#navbarResponsive a{
+	color: #fff;
+}
+
+#navbarResponsive a:hover{
+	color: #ce5656;
+}
+
+#botao-nav:hover{
+	background-color:#ce5656!important;
+}
+
+#botao-nav{
+	background-color: #b73131!important;
+
+}
+
+#todo{
+	background-color: rgba(255,255,255,0.8);
+	margin-top: 39%;
+}
+
+#texto{
+	text-align: center;	
+	margin-bottom: 50px;
+
+}
+
+.card{
+	overflow: hidden;
+}
+
+.card img{
+	max-width: 100%;
+	-moz-transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.card:hover img {
+	-moz-transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}
+
+#rodape{
+	justify-content: center;
+    background-color: rgba(255, 255, 255, 1.8);
+    text-align: justify;
+    display: flex;
+    align-items: left;
+	flex-basis: 50%;
+}
+
+.rodape-02{
+	padding: 30px;
+	text-align: left;
+	flex-basis: 19%;
+}
+
+.rodape-02>h4 {
+	color: #000000;
+	margin-top: 5px;
+	font-size: 18px;
+}
+
+.rodape-02>a {
+	display: block;
+	color: #000;
+	font-size: 13px;
+	margin: 10px;
+	text-decoration: none;
+}
+
+.rodape-02>a:hover {
+	color:#000000;
+	margin: 10px;
+	text-decoration: underline; 
+}
+
+.rodape-02>p {
+	color: #000000;
+	font-size: 13px;
+}
+
+
+#sobre {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 50%;
+	justify-content: center;
+	align-items: center;
+	text-align: center;	
+	background-color: rgb(240, 240, 240, 1.9);
+	font-size: 15px;
+}
+
+
+
+
+
+.thumbnail {
+  max-width: 40%;
+}
+
+
+
+/** LIGHTBOX MARKUP **/
+
+.lightbox {
+	/** Default lightbox to hidden */
+	display: none;
+
+	/** Position and style */
+	position: fixed;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	top: 85px;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+}
+
+.lightbox img {
+	/** Pad the lightbox image */
+	max-width: 90%;
+	max-height: 80%;
+	bottom: 90%;
+
+}
+
+.lightbox:target {
+	/** Remove default browser outline */
+	outline: none;
+
+	/** Unhide lightbox **/
+	display: block;
+}

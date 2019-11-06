@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OMD</title>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/adotarcss.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="shortcut icon" href="img/simbolo8.png" type="image/x-jpg">
+
+    <script type="text/javascript" defer src="libs/jQuery/jquery-3.3.1.js"></script>
+    <script type="text/javascript" defer src="libs/Bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" defer src="js/adotarjs.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>    
+ 
+</head>
+<body>
+ <nav id="mainNav" class="navbar navbar-expand-lg fixed-top bg-secundario">
+     <div class="container">
+      <button id="botao-nav" class="navbar-toggler navbar-toggler-right text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fa fa-bars"></i>
+      </button>
+      <div id="junto">
+      <img src="img/pet2.png" height="35px" width="35px">
+      <a class="navbar-brand" href="home.php">Oh My Dog</a>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="home.php">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="adotar.php">Adotar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="doar.php">Doar</a>
+          </li>
+         <li class="nav-item dropdown text-white">
+                <a class="nav-link dropdown-toggle text-white" href="https://example.com" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <?php 
+                    include 'php/certificando.php';
+                include 'php/conexao.php';  
+
+
+                //  nova variavel onde guarda o objeto criado na funcao getConnection()
+                $conn = getConnection();
+                $email = $_SESSION['email'];
+                $senha = $_SESSION['senha'];
+
+              // Consulta SQL que irá retornar valores do DB
+                $sql_show = "SELECT * FROM usuario WHERE email = '$email' AND senha = '$senha'";
+                $stmt = $conn->prepare($sql_show);
+                $stmt->execute();
+
+                #Aqui criamos uma variavel chamada "funcionarios" onde ele recebe o resultado do objeto "stmt". com a função fatchALL, retornamos a lista de nomes, um array, mas como objetos, onde chamaremos mais abaixo no foreach
+                $usuario = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+            ?>
+            <?php foreach($usuario as $user): ?>
+            <?php echo $user->nome; ?>
+            <?php endforeach; ?>
+                </a>
+                <div class="dropdown-menu" color='#000' aria-labelledby="dropdown07">
+                  <a class="dropdown-item" href="perfil.php"><font color="#ce5656">Perfil</font></a>
+                  <!--Página de gerenciamento do cadastro-->
+                  <a class="dropdown-item" href="participacao.php"><font color="#ce5656">Participantes</font></a>
+                  <a class="dropdown-item" href="php/logout.php"><font color="#ce5656">Sair</font></a>
+                </div>
+              </li>
+        </ul>
+      </div>
+      </div>
+    </nav>
+
+
+
+   <div id="todo">
+
+    <section id="texto">
+      <br>
+      <br>
+      <h1>A D <img src="img/coracao.jpg" height="40px" width="40px"> T A R</h1>  
+    </section>
+     
+ <div class="card-deck">
+    <div class="card">
+    <a href="#img1">
+    <img src="img/aq.jpg" class="card-img-top" alt="...">
+    </a>
+    <div class="card-body">
+      <h5 class="card-title" align="center" class="thumbnail">Felícia</h5>
+
+      <a href="#_" class="lightbox" id="img1">
+      <img src="img/aq.jpg">
+      </a>
+            <p class="card-text" align="center"><small class="text-muted">Fêmea; 9 meses; Pequeno porte; Vacinada</small></p>
+ 
+    <a href="confirmacao.php"><p class="card-text" align="center"><small class="text-muted">ADOTAR</small></p></a>
+    <a href="confirmacao.php"><p class="card-text" align="center"><small class="text-muted">APADRINHAR</small></p></a>
+
+    </div>
+  </div>
+
+  <div class="card">
+     <a href="#img2">
+    <img src="img/ar.jpg" class="card-img-top" alt="...">
+     </a>
+    <div class="card-body">
+      <h5 class="card-title" align="center" class="thumbnail">Safira</h5>
+
+      <a href="#_" class="lightbox" id="img2">
+      <img src="img/ar.jpg">
+      </a>
+      <p class="card-text" align="center"><small class="text-muted">Fêmea; 1 ano; Médio porte; Vacinada</small></p>
+
+       <a href="confirmacao.php"><p class="card-text" align="center"><small class="text-muted">ADOTAR</small></p></a>
+    </div>
+  </div>
+
+  <div class="card">
+    <a href="#img3">
+    <img src="img/as.jpg" class="card-img-top" alt="...">
+  </a>
+    <div class="card-body">
+      <h5 class="card-title" align="center" class="thumbnail">Simba</h5>
+
+      <a href="#_" class="lightbox" id="img3">
+      <img src="img/as.jpg">
+      </a>
+      <p class="card-text" align="center"><small class="text-muted">Macho; 1 ano; Grande porte; Vacinado</small></p>
+
+       <a href="confirmacao.php"><p class="card-text" align="center"><small class="text-muted">ADOTAR</small></p></a>
+    </div>
+  </div>
+
+  <div class="card">
+    <a href="#img4">
+    <img src="img/at.jpg" class="card-img-top" alt="...">
+     </a>
+    <div class="card-body">
+      <h5 class="card-title" align="center" class="thumbnail">Ozzy</h5>
+
+      <a href="#_" class="lightbox" id="img4">
+      <img src="img/at.jpg">
+      </a>
+      <p class="card-text" align="center"><small class="text-muted">Macho; 2 anos; Grande porte; Vacinada</small></p>
+
+       <a href="confirmacao.php"><p class="card-text" align="center"><small class="text-muted">ADOTAR</small></p></a>
+    </div>
+  </div>
+</div>
+   
+      <br>
+      <br>
+      <br>
+
+<div class="card-deck">
+  <div class="card">
+    <a href="#img5">
+    <img src="img/b6.jpg" class="card-img-top" alt="...">
+  </a>
+    <div class="card-body">
+      <h5 class="card-title" align="center" class="thumbnail">Tunico</h5>
+
+      <a href="#_" class="lightbox" id="img5">
+      <img src="img/b6.jpg">
+      </a>
+       <p class="card-text" align="center"><small class="text-muted">Macho; 4 anos; Grande porte; Vacinado</small></p>
+
+    <a href="confirmacao.php"><p class="card-text" align="center"><small class="text-muted">ADOTAR</small></p></a>
+    </div>
+  </div>
+
+  <div class="card">
+    <a href="#img20">
+    <img src="img/b1.jpg" class="card-img-top" alt="...">
+  </a>
+    <div class="card-body">
+      <h5 class="card-title" align="center" class="thumbnail">Bento</h5>
+
+      <a href="#_" class="lightbox" id="img20">
+      <img src="img/b1.jpg">
+      </a>
+      <p class="card-text" align="center"><small class="text-muted">Macho; 11 memses; Médio porte; Vacinado</small></p>
+
+       <a href="confirmacao.php"><p class="card-text" align="center"><small class="text-muted">ADOTAR</small></p></a>
+    </div>
+  </div>
+
+  <div class="card">
+    <a href="#img6">
+    <img src="img/q5.jpg" class="card-img-top" alt="...">
+  </a>
+    <div class="card-body">
+      <h5 class="card-title" align="center" class="thumbnail">Bud</h5>
+
+      <a href="#_" class="lightbox" id="img6">
+      <img src="img/q5.jpg">
+      </a>
+      <p class="card-text" align="center"><small class="text-muted">Macho; 1 ano; Médio porte; Vacinado</small></p>
+
+       <a href="confirmacao.php"><p class="card-text" align="center"><small class="text-muted">ADOTAR</small></p></a>
+    </div>
+  </div>
+
+  <div class="card">
+    <a href="#img7">
+    <img src="img/q4.jpg" class="card-img-top" alt="...">
+  </a>
+    <div class="card-body">
+      <h5 class="card-title" align="center" class="thumbnail">Kiko</h5>
+
+      <a href="#_" class="lightbox" id="img7">
+      <img src="img/q4.jpg">
+      </a>
+      <p class="card-text" align="center"><small class="text-muted">Macho; 5 anos; Médio porte; Vacinado</small></p>
+
+       <a href="confirmacao.php"><p class="card-text" align="center"><small class="text-muted">ADOTAR</small></p></a>
+    </div>
+  </div>
+</div>
+
+      <br>
+      <br>
+      <br>
+
+<div class="card-deck">
+  <div class="card">
+    <a href="#img8">
+    <img src="img/ad.jpg" class="card-img-top" alt="...">
+  </a>
+    <div class="card-body">
+      <h5 class="card-title" align="center" class="thumbnail">Dino</h5>
+
+      <a href="#_" class="lightbox" id="img8">
+      <img src="img/ad.jpg">
+      </a>
+      <p class="card-text" align="center"><small class="text-muted">Macho; 2 anos; Grande porte; Vacinado</small></p>
+
+       <a href="confirmacao.php"><p class="card-text" align="center"><small class="text-muted">ADOTAR</small></p></a>
+    </div>
+  </div>
+
+  <div class="card">
+    <a href="#img9">
+    <img src="img/q2.jpg" class="card-img-top" alt="...">
+  </a>
+    <div class="card-body">
+      <h5 class="card-title" align="center" class="thumbnail">Frodo</h5>
+
+      <a href="#_" class="lightbox" id="img9">
+      <img src="img/q2.jpg">
+      </a>
+      <p class="card-text" align="center"><small class="text-muted">Macho; 3 anos; Médio porte; Vacinado</small></p>
+
+       <a href="confirmacao.php"><p class="card-text" align="center"><small class="text-muted">ADOTAR</small></p></a>
+    </div>
+  </div>
+
+  <div class="card">
+    <a href="#img10">
+    <img src="img/ag.jpg" class="card-img-top" alt="...">
+  </a>
+    <div class="card-body">
+      <h5 class="card-title" align="center" class="thumbnail">Alfredo</h5>
+
+      <a href="#_" class="lightbox" id="img10">
+      <img src="img/ag.jpg">
+      </a>
+      <p class="card-text" align="center"><small class="text-muted">Macho; 2 anos; Grande porte; Vacinado</small></p>
+
+      <a href="confirmacao.php"><p class="card-text" align="center"><small class="text-muted">ADOTAR</small></p></a>
+    </div>
+  </div>
+
+  <div class="card">
+    <a href="#img11">
+    <img src="img/b4.jpg" class="card-img-top" alt="...">
+  </a>
+    <div class="card-body">
+      <h5 class="card-title" align="center" class="thumbnail">Elvis</h5>
+
+      <a href="#_" class="lightbox" id="img11">
+      <img src="img/b4.jpg">
+      </a>
+      <p class="card-text" align="center"><small class="text-muted">Macho; 4 anos; Grande porte; Vacinado</small></p>
+
+    <a href="confirmacao.php"><p class="card-text" align="center"><small class="text-muted">ADOTAR</small></p></a>
+    </div>
+  </div>
+</div>
+
+      <br>
+      <br>
+      <br>
+
+<div class="card-deck">
+  <div class="card">
+    <a href="#img12">
+    <img src="img/ak.jpg" class="card-img-top" alt="...">
+  </a>
+    <div class="card-body">
+      <h5 class="card-title" align="center" class="thumbnail">Boris</h5>
+
+      <a href="#_" class="lightbox" id="img12">
+      <img src="img/ak.jpg">
+      </a>
+      <p class="card-text" align="center"><small class="text-muted">Macho; 5 anos; Médio porte; Vacinado</small></p>
+
+     <a href="confirmacao.php"><p class="card-text" align="center"><small class="text-muted">ADOTAR</small></p></a>
+    </div>
+  </div>
+
+  <div class="card">
+    <a href="#img13">
+    <img src="img/b5.jpg" class="card-img-top" alt="...">
+  </a>
+    <div class="card-body">
+      <h5 class="card-title" align="center" class="thumbnail">Sushi</h5>
+
+      <a href="#_" class="lightbox" id="img13">
+      <img src="img/b5.jpg">
+      </a>
+      <p class="card-text" align="center"><small class="text-muted">Macho; 8 meses; Médio porte; Vacinado</small></p>
+
+     <a href="confirmacao.php"><p class="card-text" align="center"><small class="text-muted">ADOTAR</small></p></a>
+    </div>
+  </div>
+
+  <div class="card">
+    <a href="#img14">
+    <img src="img/q7.png" class="card-img-top" alt="...">
+  </a>
+    <div class="card-body">
+      <h5 class="card-title" align="center" class="thumbnail">Pietra</h5>
+
+      <a href="#_" class="lightbox" id="img14">
+      <img src="img/q7.png">
+      </a>
+      <p class="card-text" align="center"><small class="text-muted">Fêmea; 1 ano; Médio porte; Vacinada</small></p>
+
+      <a href="confirmacao.php"><p class="card-text" align="center"><small class="text-muted">ADOTAR</small></p></a>
+    </div>
+  </div>
+
+  <div class="card">
+    <a href="#img15">
+    <img src="img/b7.jpg" class="card-img-top" alt="...">
+  </a>
+    <div class="card-body">
+      <h5 class="card-title" align="center" class="thumbnail">Lorde</h5>
+
+      <a href="#_" class="lightbox" id="img15">
+      <img src="img/b7.jpg">
+      </a>
+      <p class="card-text" align="center"><small class="text-muted">Macho; 4 anos; Médio porte; Vacinado</small></p>
+
+     <a href="confirmacao.php"><p class="card-text" align="center"><small class="text-muted">ADOTAR</small></p></a>
+    </div>
+  </div>
+</div>
+
+      <br>
+      <br>
+      <br>
+
+<div class="card-deck">
+  <div class="card">
+    <a href="#img16">
+    <img src="img/b8.jpg" class="card-img-top" alt="...">
+  </a>
+    <div class="card-body">
+      <h5 class="card-title" align="center" class="thumbnail">Dom</h5>
+
+      <a href="#_" class="lightbox" id="img16">
+      <img src="img/b8.jpg">
+      </a>
+      <p class="card-text" align="center"><small class="text-muted">Macho; 6 anos; Médio porte; Vacinado</small></p>
+
+   <a href="confirmacao.php"><p class="card-text" align="center"><small class="text-muted">ADOTAR</small></p></a>
+    </div>
+  </div>
+
+  <div class="card">
+    <a href="#img17">
+    <img src="img/t.jpg" class="card-img-top" alt="...">
+  </a>
+    <div class="card-body">
+      <h5 class="card-title" align="center" class="thumbnail">Lupi</h5>
+
+      <a href="#_" class="lightbox" id="img17">
+      <img src="img/t.jpg">
+      </a>
+      <p class="card-text" align="center"><small class="text-muted">Macho; 5 meses; Médio porte; Vacinado</small></p>
+
+       <a href="confirmacao.php"><p class="card-text" align="center"><small class="text-muted">ADOTAR</small></p></a>
+    </div>
+  </div>
+
+  <div class="card">
+    <a href="#img18">
+    <img src="img/q1.png" class="card-img-top" alt="...">
+  </a>
+    <div class="card-body">
+      <h5 class="card-title" align="center" class="thumbnail">Berenice</h5>
+
+      <a href="#_" class="lightbox" id="img18">
+      <img src="img/q1.png">
+      </a>
+      <p class="card-text" align="center"><small class="text-muted">Fêmea; 2 anos; Médio porte; Vacinada</small></p>
+
+      <a href="confirmacao.php"><p class="card-text" align="center"><small class="text-muted">ADOTAR</small></p></a>
+    </div>
+  </div>
+
+  <div class="card">
+    <a href="#img19">
+    <img src="img/q3.jpg" class="card-img-top" alt="...">
+  </a>
+    <div class="card-body">
+      <h5 class="card-title" align="center" class="thumbnail">Filomena</h5>
+
+      <a href="#_" class="lightbox" id="img19">
+      <img src="img/q3.jpg">
+      </a>
+      <p class="card-text" align="center"><small class="text-muted">Fêmea; 2 anos; Grande porte; Vacinada</small></p>
+
+       <a href="confirmacao.php"><p class="card-text" align="center"><small class="text-muted">ADOTAR</small></p></a>
+    </div>
+  </div>
+</div>
+
+<br>
+<br>     
+    </div>
+
+
+
+     <section id="rodape">
+        <div class="rodape-02">
+          <h4>Sobre Nós</h4><hr>
+          <p>Fale com a gente! Quer saber mais sobre nosso trabalho? Mande um email que nós respondemos!</p>
+            <p>Email: meudog.mg@gmailcom</p>
+        </div>
+        <div class="rodape-02">
+          <h4>Endereço e Agência</h4><hr>
+            <p>Caixa postal: 4555 46360-00</p>
+            <p>Conta corrente: 8890-1</p>
+            <p>Rua: Plinio Salgado Nº145</p>  
+            <p>Cidade: Guanambi-BA</p>
+        </div>
+
+         <div class="rodape-02">
+          <h4>Inspire-se</h4><hr>
+            <a href="https://www.petlove.com.br/dicas/lista-de-ongs-animais-para-ajudar-como-puder">Petlove</a>
+            <a href="http://www.caosemdono.com.br/">Cão sem Dono</a> 
+            <a href="http://browniepetfood.com.br/importancia-das-ongs-de-animais-2/">Brownie Pet Food</a>
+            <a href="https://www.ameamoroso.org.br/?gclid=Cj0KCQjw4-XlBRDuARIsAK96p3D9r4HL1V-rwqZIY5w89IOjuODWe_yRdxFDaGcZIm__QDCVpTmosvcaAjZlEALw_wcB">Construindo cidadania</a>
+        </div>
+        <div class="rodape-02">
+          <hr><h3><img src="img/simbolo8.jpg" height="30px" width="35px">Oh My Dog</h3><hr>
+         <a href="https://www.instagram.com/?hl=pt-br"><img src="img/rede1.jpg" height="35px" width="35px"> @OhMyDog</a>
+        <a href="https://pt-br.facebook.com/r.php/"><img src="img/rede2.jpg" height="30px" width="35px"> Oh My Dog</a>
+        </div>
+
+     </section>
+
+     <section id="sobre">
+      <hr width="60%">
+        <p>2019 Função de caridade| Amor pelos animais </p>
+        <p>Toda forma de amar</p>
+      </section>
+</body>
+</html>
